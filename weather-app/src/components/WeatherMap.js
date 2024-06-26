@@ -1,33 +1,46 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import './WeatherMap.css';
 
-const WeatherMap = ({ lat, lon }) => {
+const WeatherMap = ({ weatherData }) => {
   const mapRef = useRef(null);
+  const mapInstance = useRef(null);
 
   useEffect(() => {
     if (!mapRef.current) return;
 
-    const map = L.map(mapRef.current).setView([lat, lon], 13);
+    if (!mapInstance.current) {
+      mapInstance.current = L.map(mapRef.current).setView([0, 0], 2);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(mapInstance.current);
+    }
 
-    const apiKey = '33aa4fc885a1d69e61b66e0dc4ef56d0'; // Replace with your actual OpenWeatherMap API key
-    const weatherLayer = L.tileLayer(`https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
-      attribution: '&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>',
-      maxZoom: 18
+    // Clear existing markers
+    mapInstance.current.eachLayer((layer) => {
+      if (layer instanceof L.Marker) {
+        mapInstance.current.removeLayer(layer);
+      }
     });
 
-    weatherLayer.addTo(map);
+    weatherData.forEach(data => {
+      const { lat, lon } = data.coord;
+      const marker = L.marker([lat, lon]).addTo(mapInstance.current);
+      marker.bindPopup(`<b>${data.name}</b><br>Temperature: ${data.main.temp} °C`);
 
-    return () => {
-      map.remove();
-    };
-  }, [lat, lon]);
+      // Zoom to the location with animation
+      mapInstance.current.setView([lat, lon], 10, {
+        animate: true,
+        pan: {
+          duration: 2
+        }
+      });
+    });
+  }, [weatherData]);
 
-  return <div ref={mapRef} style={{ height: '400px' }} />;
+  return <div ref={mapRef} className="map-container" />;
 };
 
 export default WeatherMap;

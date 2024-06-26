@@ -1,34 +1,5 @@
-/* App.css */
-
-/* Style for the overall container of the application */
-.App {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  /* Style for the heading */
-  h1 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-  }
-  
-  /* Style for the weather form */
-  .WeatherForm {
-    margin-bottom: 20px;
-  }
-  
-  /* Style for the weather display */
-  .WeatherDisplay {
-    margin-bottom: 20px;
-  }
-  
-  /* Style for the map container */
-  #map {
-    height: 400px; /* Adjust height as needed */
-    width: 100%; /* Full width of its container */
-    border: 1px solid #ccc; /* Optional: Add border for visibility */
-    border-radius: 8px; /* Optional: Add border radius for rounded corners */
-  }
-  
+.map-container {
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
+}

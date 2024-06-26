@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
-import './WeatherForm.css';
+import './WeatherForm.css'; // Import the CSS file
 
-function WeatherForm({ getWeather }) {
-  const [input, setInput] = useState('');
+const WeatherForm = ({ getWeather }) => {
+  const [cities, setCities] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getWeather(input);
-    setInput('');
+    const cityList = cities.split(',').map(city => city.trim());
+    getWeather(cityList);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="weather-form">
+    <form className="weather-form" onSubmit={handleSubmit}>
       <input
         type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Enter city name"
-        className="weather-input"
+        value={cities}
+        onChange={(e) => setCities(e.target.value)}
+        placeholder="Enter cities separated by commas"
       />
-      <button type="submit" className="weather-button">Get Weather</button>
+      <button type="submit">Get Weather</button>
     </form>
   );
-}
+};
 
 export default WeatherForm;
