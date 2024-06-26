@@ -20,7 +20,6 @@ const WeatherMap = ({ weatherData }) => {
       }).addTo(mapInstance.current);
     }
 
-    // Clear existing markers
     mapInstance.current.eachLayer((layer) => {
       if (layer instanceof L.Marker) {
         mapInstance.current.removeLayer(layer);
