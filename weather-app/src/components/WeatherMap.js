@@ -1,3 +1,5 @@
+// WeatherMap.js
+
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -29,14 +31,6 @@ const WeatherMap = ({ weatherData }) => {
       const { lat, lon } = data.coord;
       const marker = L.marker([lat, lon]).addTo(mapInstance.current);
       marker.bindPopup(`<b>${data.name}</b><br>Temperature: ${data.main.temp} °C`);
-
-      // Zoom to the location with animation
-      mapInstance.current.setView([lat, lon], 10, {
-        animate: true,
-        pan: {
-          duration: 2
-        }
-      });
     });
   }, [weatherData]);
 

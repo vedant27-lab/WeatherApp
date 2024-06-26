@@ -1,5 +1,38 @@
+/* WeatherMap.css */
+
 .map-container {
   width: 100%;
   height: 400px;
   margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Example of styling popups */
+.leaflet-popup-content-wrapper {
+  background-color: #fff;
+  color: #333;
+  border-radius: 6px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+  padding: 10px;
+}
+
+.leaflet-popup-tip {
+  background-color: #fff;
+  box-shadow: none;
+}
+
+/* Custom marker icon */
+.marker-icon {
+  background-image: url(); /* Replace with your custom marker icon URL */
+  background-size: contain;
+  width: 25px;
+  height: 41px;
+}
+
+/* Example of hover effect on markers */
+.marker-icon:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
 }
