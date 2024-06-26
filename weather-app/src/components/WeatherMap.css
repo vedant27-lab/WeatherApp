@@ -1,4 +1,4 @@
-/* WeatherMap.css */
+
 
 .map-container {
   width: 100%;
@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-/* Example of styling popups */
+
 .leaflet-popup-content-wrapper {
   background-color: #fff;
   color: #333;
@@ -23,7 +23,6 @@
   box-shadow: none;
 }
 
-/* Custom marker icon */
 .marker-icon {
   background-image: url(); /* Replace with your custom marker icon URL */
   background-size: contain;
@@ -31,7 +30,7 @@
   height: 41px;
 }
 
-/* Example of hover effect on markers */
+
 .marker-icon:hover {
   transform: scale(1.2);
   transition: transform 0.2s ease-in-out;
