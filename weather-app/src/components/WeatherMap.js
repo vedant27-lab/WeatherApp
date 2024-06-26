@@ -14,7 +14,7 @@ const WeatherMap = ({ lat, lon }) => {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    const apiKey = 'your_openweathermap_api_key'; // Replace with your actual OpenWeatherMap API key
+    const apiKey = '33aa4fc885a1d69e61b66e0dc4ef56d0'; // Replace with your actual OpenWeatherMap API key
     const weatherLayer = L.tileLayer(`https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
       attribution: '&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>',
       maxZoom: 18
